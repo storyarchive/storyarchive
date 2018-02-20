@@ -1,0 +1,9 @@
+[package]
+name = "storyarchive"
+version = "0.1.0"
+authors = ["Txuritan <txurtian@yahoo.com>"]
+
+[dependencies]
+rocket = "0.3"
+rocket_codegen = "0.3"
+rocket_contrib = "0.3"
