@@ -2,27 +2,27 @@ use std::string::String;
 
 use cconfig::{Config, ConfigError, Environment, File};
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct GeneralConfig {
-    theme: String,
-    themes_dir: String,
+    pub theme: String,
+    pub themes_dir: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub enum DatabaseType {
     PostgreSQL,
     SQLite3,
 }
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct DatabaseConfig {
-    database_type: DatabaseType,
+    pub database_type: DatabaseType,
 }
 
-#[derive(Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct StoryArchiveConfig {
-    general: GeneralConfig,
-    database: DatabaseConfig,
+    pub general: GeneralConfig,
+    pub database: DatabaseConfig,
 }
 
 impl StoryArchiveConfig {
