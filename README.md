@@ -1,4 +1,6 @@
-<img src="https://raw.githubusercontent.com/storyarchive/storyarchive/dev-0.1.0/icons/icon-200x200.svg?sanitize=true" align="center">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/storyarchive/storyarchive/dev-0.1.0/icons/icon-200x200.svg?sanitize=true">
+</p>
 
 <h1 align="center">StoryArchive</h1>
 
@@ -99,3 +101,4 @@ An example can be found in the ```Downhearted``` repository [link](https://githu
 
 ## Acknowledgments
   * FanFiction.net, Archive of Our Own, and Wattpad for being the inspiration for creating this.
+  * [japaric](https://github.com/japaric) and his [trust](https://github.com/japaric/trust) build system.
