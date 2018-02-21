@@ -1,0 +1,6 @@
+[general]
+theme = "downhearted"
+themes_dir = "themes"
+
+[database]
+database_type = "SQLite"
