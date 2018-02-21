@@ -5,13 +5,17 @@
 <h1 align="center">StoryArchive</h1>
 
 <div align="center">
+  <small>Version <b>dev-0.1.0</b></small>
+</div>
+
+<div align="center">
   <b>Where stories meet open source.</b>
 </div>
 
 <div align="center">
   <img src="https://img.shields.io/badge/made%20with-rust-orange.svg?style=flat-square" alt="Made With Rust" />
   <a href="https://github.com/SergioBenitez/Rocket">
-    <img src="https://img.shields.io/badge/build%20in-rocket-red.svg?style=flat-square" alt="Built In Magnum" />
+    <img src="https://img.shields.io/badge/build%20with-rocket-red.svg?style=flat-square" alt="Built With Rocket" />
   </a>
 </div>
 
@@ -42,19 +46,25 @@
 A project deticated to creating a alternative to FanFiction.net, Archive of Our Own, and Wattpad.
 
 ## Table Of Contents
-  * [Build](#build)
+  * [Building](#building)
+  * [Installation](#installation)
   * [Customization](#customization)
     * [Configuration](#configuration)
     * [Theme](#theme)
   * [Contributors](#contributors)
 
-## Build
+## Building
   * Install PostgreSQL and SQLite and their development libraries.
   * Install Rustup from [link](https://www.rustup.rs/).
     * During installation specify ```nightly``` as the toolchain.
   * Install cargo-make with ```cargo install cargo-make```.
   * Clone this repository and enter it.
   * Run ```cargo make```.
+
+## Installation
+StoryArchive also comes with prebuilt preleases (excluding the required database libraries).
+
+
 
 ## Customization
 ### Configuration
@@ -76,7 +86,7 @@ themes_dir = "themes" # The directory of themes (Must be a string)
 # The 'database' category.
 # This controls how StoryArchive's will connect to and what kind of database is used.
 [database]
-database_type = "SQLite3" # What databse is used (Allows "PostgreSQL" or "SQLite3")
+database_type = "SQLite3" # What databse is used (Allows "PostgreSQL" or "SQLite3" writen as a string)
 ```
 
 ### Theme
@@ -101,4 +111,4 @@ An example can be found in the ```Downhearted``` repository [link](https://githu
 
 ## Acknowledgments
   * FanFiction.net, Archive of Our Own, and Wattpad for being the inspiration for creating this.
-  * [japaric](https://github.com/japaric) and his [trust](https://github.com/japaric/trust) build system.
+  * [japaric](https://github.com/japaric) and the [trust](https://github.com/japaric/trust) ci build files.
