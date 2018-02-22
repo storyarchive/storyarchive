@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/storyarchive/storyarchive/dev-0.1.0/icons/icon-200x200.svg?sanitize=true">
+  <img src="https://raw.githubusercontent.com/storyarchive/storyarchive/dev-0.1.0/icons/icon-160x160.png">
 </p>
 
 <h1 align="center">StoryArchive</h1>
