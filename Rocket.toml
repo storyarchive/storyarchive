@@ -1,0 +1,2 @@
+[global]
+template_dir = "./" # Allows StoryArchive to have access to all folders (for themes)

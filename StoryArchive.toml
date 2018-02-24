@@ -1,6 +1,11 @@
+# The 'general' category.
+# This controls basic parts of StoryArchive's internals.
 [general]
-theme = "downhearted"
-themes_dir = "themes"
+theme = "downhearted" # The current theme (Must be a string)
+themes_dir = "themes" # The directory of themes (Must be a string)
 
+# The 'database' category.
+# This controls how StoryArchive's will connect to and what kind of database is used.
 [database]
-database_type = "SQLite3"
+database_name = "storyarchive" # The collection for StoryArchive
+database_url = "mongodb://localhost:27017/" # The MongoDB connection URI
