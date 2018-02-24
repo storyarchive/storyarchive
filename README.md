@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/storyarchive/storyarchive/dev-0.1.0/icons/icon-160x160.png">
+  <img src="./icons/icon-160x160.png">
 </p>
 
 <h1 align="center">StoryArchive</h1>
 
 <div align="center">
-  <small>Version <b>dev-0.1.0</b></small>
+  <small>Version: <b>dev-0.1.0</b></small>
 </div>
 
 <div align="center">
@@ -43,7 +43,7 @@
 
 ---
 
-A project deticated to creating a alternative to FanFiction.net, Archive of Our Own, and Wattpad.
+A project dedicated to creating a alternative to FanFiction.net, Archive of Our Own, and Wattpad.
 
 ## Table Of Contents
   * [Building](#building)
@@ -54,15 +54,16 @@ A project deticated to creating a alternative to FanFiction.net, Archive of Our 
   * [Contributors](#contributors)
 
 ## Building
-  * Install PostgreSQL and SQLite and their development libraries.
+  * Install MongoDB and its development libraries.
   * Install Rustup from [link](https://www.rustup.rs/).
     * During installation specify ```nightly``` as the toolchain.
   * Install cargo-make with ```cargo install cargo-make```.
+    * Cargo-Make will install the other tools when needed.
   * Clone this repository and enter it.
-  * Run ```cargo make```.
+  * Run ```cargo read```.
 
 ## Installation
-StoryArchive also comes with prebuilt preleases (excluding the required database libraries).
+StoryArchive also comes with prebuilt releases (excluding the required database libraries).
 
 
 
@@ -86,11 +87,12 @@ themes_dir = "themes" # The directory of themes (Must be a string)
 # The 'database' category.
 # This controls how StoryArchive's will connect to and what kind of database is used.
 [database]
-database_type = "SQLite3" # What databse is used (Allows "PostgreSQL" or "SQLite3" writen as a string)
+database_name = "storyarchive" # The collection for StoryArchive
+database_url = "mongodb://localhost:27017/" # The MongoDB connection URI
 ```
 
 ### Theme
-StoryArchive uses themes to allow you change the fron-end to your hearts desire.
+StoryArchive uses themes to allow you change the front-end to your hearts desire.
 
 By default themes can be found in the ```themes``` folder. 
 
@@ -101,7 +103,16 @@ Themes have a configuration file in their root folder called ```Theme.toml```. W
 The ```Theme.toml``` config file is the following:
 
 ```toml
+# This contains general information on the theme being used
+[theme]
+assets = "assets" # Static assets folder
+rest = false # REST mode (disables all routes except path.hub.home and assets)
 
+# Template paths for the 'Hub' routes
+[path.hub]
+home = "hub/home" # The path to the index template
+login = "hub/login" # The path to the login template
+register = "hub/register" # The path to the register template
 ```
 
 An example can be found in the ```Downhearted``` repository [link](https://github.com/storyarchive/theme-downhearted).
