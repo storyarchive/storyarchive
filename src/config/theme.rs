@@ -2,28 +2,36 @@ use cconfig::{Config, ConfigError, File};
 
 use helpers;
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct Theme {
     pub assets: String,
     pub rest: bool,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct PathHub {
     pub home: String,
     pub login: String,
     pub register: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 pub struct Path {
     pub hub: PathHub,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
+pub struct Sass {
+    pub inline: bool,
+    pub input: String,
+    pub output: String,
+}
+
+#[derive(Clone, Deserialize)]
 pub struct ThemeConfig {
     pub theme: Theme,
     pub path: Path,
+    pub sass: Sass,
 }
 
 impl ThemeConfig {
