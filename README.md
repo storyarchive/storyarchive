@@ -55,6 +55,7 @@ A project dedicated to creating a alternative to FanFiction.net, Archive of Our 
 
 ## Building
   * Install MongoDB and its development libraries.
+  * Install libsass and its development libraries.
   * Install Rustup from [link](https://www.rustup.rs/).
     * During installation specify ```nightly``` as the toolchain.
   * Install cargo-make with ```cargo install cargo-make```.
@@ -107,15 +108,22 @@ The ```Theme.toml``` config file is the following:
 [theme]
 assets = "assets" # Static assets folder
 rest = false # REST mode (disables all routes except path.hub.home and assets)
+translation = "translation" # The folder containing Project Fluent tranlation files
 
 # Template paths for the 'Hub' routes
 [path.hub]
 home = "hub/home" # The path to the index template
 login = "hub/login" # The path to the login template
 register = "hub/register" # The path to the register template
+
+# StoryArchive has built-in support for SASS
+[sass]
+inline = false # Inject the compiled SASS into all templates
+input = "index" # The main SASS file to be loaded
+output = "cerberus" # The SASS output file name
 ```
 
-An example can be found in the ```Downhearted``` repository [link](https://github.com/storyarchive/theme-downhearted).
+The same example can be found in the ```Downhearted``` repository [link](https://github.com/storyarchive/theme-downhearted).
 
 ## Contributors
   * **Ian Cronkright** - *Author/Repository Lead* - [Txuritan](https://github.com/Txuritan)

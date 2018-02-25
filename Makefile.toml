@@ -1,2 +1,2 @@
-[task.build]
+[task.read]
 command = "ls"

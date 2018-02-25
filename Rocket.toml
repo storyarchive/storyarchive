@@ -1,2 +1,2 @@
 [global]
-template_dir = "./" # Allows StoryArchive to have access to all folders (for themes)
+template_dir = "themes/downhearted/templates" # Sadly Rocket needs to know ther full path to your base templates folder
