@@ -5,6 +5,7 @@ use rocket_contrib::Template;
 
 use config::storyarchive::StoryArchiveConfig;
 use config::theme::ThemeConfig;
+use extras::sass::Sass;
 
 pub fn routes() -> Vec<Route> {
     routes![
@@ -15,76 +16,76 @@ pub fn routes() -> Vec<Route> {
 
 #[get("/")]
 pub fn home(
-    storyarchive_config: State<StoryArchiveConfig>,
+    _storyarchive_config: State<StoryArchiveConfig>,
     theme_config: State<ThemeConfig>,
+    sass: State<Sass>,
 ) -> Template {
     let mut context = HashMap::new();
     context.insert("path", "");
+    context.insert("css", &sass.compiled);
 
     Template::render(
         format!(
-            "{}/{}/{}",
-            storyarchive_config.general.themes_dir,
-            storyarchive_config.general.theme,
+            "{}",
             theme_config.path.hub.home
         ),
-        &context
+        &context,
     )
 }
 
 #[get("/login")]
 pub fn login(
-    storyarchive_config: State<StoryArchiveConfig>,
+    _storyarchive_config: State<StoryArchiveConfig>,
     theme_config: State<ThemeConfig>,
+    sass: State<Sass>,
 ) -> Template {
     let mut context = HashMap::new();
     context.insert("path", "");
+    context.insert("css", &sass.compiled);
 
     Template::render(
         format!(
-            "{}/{}/{}",
-            storyarchive_config.general.themes_dir,
-            storyarchive_config.general.theme,
+            "{}",
             theme_config.path.hub.login
         ),
-        &context
+        &context,
     )
 }
 
 #[get("/logout")]
 pub fn logout(
-    storyarchive_config: State<StoryArchiveConfig>,
+    _storyarchive_config: State<StoryArchiveConfig>,
     theme_config: State<ThemeConfig>,
+    sass: State<Sass>,
 ) -> Template {
     let mut context = HashMap::new();
     context.insert("path", "");
+    context.insert("css", &sass.compiled);
 
     Template::render(
         format!(
-            "{}/{}/{}",
-            storyarchive_config.general.themes_dir,
-            storyarchive_config.general.theme,
+            "{}",
             theme_config.path.hub.home
         ),
-        &context
+        &context,
     )
 }
 
 #[get("/register")]
 pub fn register(
-    storyarchive_config: State<StoryArchiveConfig>,
+    _storyarchive_config: State<StoryArchiveConfig>,
     theme_config: State<ThemeConfig>,
+    sass: State<Sass>,
 ) -> Template {
     let mut context = HashMap::new();
     context.insert("path", "");
+    context.insert("css", &sass.compiled);
 
     Template::render(
         format!(
-            "{}/{}/{}",
-            storyarchive_config.general.themes_dir,
-            storyarchive_config.general.theme,
+            "{}",
             theme_config.path.hub.register
         ),
-        &context
+        &context,
     )
 }
