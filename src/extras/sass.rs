@@ -39,7 +39,7 @@ impl Sass {
         })
     }
 
-    pub fn write(mut self) -> Result<Self, String> {
+    pub fn write(self) -> Result<Self, String> {
         let mut file = File::create(Path::new(
             &format!(
                 "./{}/{}/{}/{}.css",

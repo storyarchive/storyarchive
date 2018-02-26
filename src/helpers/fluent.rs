@@ -9,10 +9,10 @@ pub struct Fluent<'context> {
 
 impl<'context> Fluent<'context> {
     pub fn load(
-        theme: String,
-        themes_dir: String
+        _theme: String,
+        _themes_dir: String
     ) -> Fluent<'context> {
-        let mut contexts: HashMap<String, MessageContext<'context>> = HashMap::new();
+        let contexts: HashMap<String, MessageContext<'context>> = HashMap::new();
 
         Fluent {
             contexts
