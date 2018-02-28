@@ -6,6 +6,8 @@ use rocket_contrib::Template;
 use config::storyarchive::StoryArchiveConfig;
 use config::theme::ThemeConfig;
 use extras::sass::Sass;
+use models::page::Page;
+use models::page::hub::{Hub};
 
 pub fn routes() -> Vec<Route> {
     routes![
@@ -20,9 +22,10 @@ pub fn home(
     theme_config: State<ThemeConfig>,
     sass: State<Sass>,
 ) -> Template {
-    let mut context = HashMap::new();
-    context.insert("path", "");
-    context.insert("css", &sass.compiled);
+    let context = Page {
+        css: &sass.compiled,
+        hub: None,
+    };
 
     Template::render(
         format!(
@@ -39,9 +42,10 @@ pub fn login(
     theme_config: State<ThemeConfig>,
     sass: State<Sass>,
 ) -> Template {
-    let mut context = HashMap::new();
-    context.insert("path", "");
-    context.insert("css", &sass.compiled);
+    let context = Page {
+        css: &sass.compiled,
+        hub: None,
+    };
 
     Template::render(
         format!(
@@ -58,9 +62,10 @@ pub fn logout(
     theme_config: State<ThemeConfig>,
     sass: State<Sass>,
 ) -> Template {
-    let mut context = HashMap::new();
-    context.insert("path", "");
-    context.insert("css", &sass.compiled);
+    let context = Page {
+        css: &sass.compiled,
+        hub: None,
+    };
 
     Template::render(
         format!(
@@ -77,9 +82,10 @@ pub fn register(
     theme_config: State<ThemeConfig>,
     sass: State<Sass>,
 ) -> Template {
-    let mut context = HashMap::new();
-    context.insert("path", "");
-    context.insert("css", &sass.compiled);
+    let context = Page {
+        css: &sass.compiled,
+        hub: None,
+    };
 
     Template::render(
         format!(
