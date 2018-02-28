@@ -41,8 +41,15 @@ use rocket_contrib::Template;
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 
-#[get("/<file..>")]
+#[get("/<file..>", rank = 2)]
 fn assets(
+    file: PathBuf,
+) -> Option<NamedFile> {
+    NamedFile::open(Path::new("assets").join(file)).ok()
+}
+
+#[get("/theme/<file..>", rank = 1)]
+fn assets_theme(
     file: PathBuf,
     storyarchive_config: State<StoryArchiveConfig>,
     theme_config: State<ThemeConfig>,
@@ -75,15 +82,14 @@ fn read() -> Result<rocket::Rocket, String> {
     let mut sass = Sass::new(
         config.clone(),
         theme_config.clone()
-    )
-        .map_err(|e| e.to_string())?;
+    ).map_err(|e| e.to_string())?;
 
     sass = sass.write()
         .map_err(|e| e.to_string())?;
 
     let rocket = rocket::ignite()
         .mount("/", hub::routes())
-        .mount("assets/", routes![assets])
+        .mount("assets/", routes![assets, assets_theme])
         .attach(Template::fairing())
         .manage(Arc::clone(&client))
         .manage(Arc::clone(&db))
