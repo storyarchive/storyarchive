@@ -2,12 +2,12 @@ use std::collections::HashMap;
 use std::string::String;
 
 pub struct Story {
-    pub chapters: HashMap<u16, Chapter>, // 65535
+    pub chapters: HashMap<u32, Chapter>,
     pub meta: StoryMeta,
 }
 
 pub struct StoryMeta {
-    pub favorites: u32, // 4294967295
+    pub favorites: u32,
     pub follows: u32,
     pub views: u32,
     pub words: u32,
