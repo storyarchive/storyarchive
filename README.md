@@ -108,7 +108,15 @@ The ```Theme.toml``` config file is the following:
 [theme]
 assets = "assets" # Static assets folder
 rest = false # REST mode (disables all routes except path.hub.home and assets)
-translation = "translation" # The folder containing Project Fluent tranlation files
+
+# Settings for Project Fluent translations
+[fluent]
+translation = "translation" # The folder containing Project Fluent tranlation files (.ftl)
+
+# List of languages the theme provides with the order choosing the default
+# (eg: en = ["en-us", "en-gb"], en will use "en-us" by default)
+[fluent.languages]
+en = ["en-us"] # Languages for English
 
 # Template paths for the 'Hub' routes
 [path.hub]
@@ -118,7 +126,6 @@ register = "hub/register" # The path to the register template
 
 # StoryArchive has built-in support for SASS
 [sass]
-inline = false # Inject the compiled SASS into all templates
 input = "index" # The main SASS file to be loaded
 output = "cerberus" # The SASS output file name
 ```

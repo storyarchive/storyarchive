@@ -9,10 +9,13 @@ pub struct Theme {
 }
 
 #[derive(Clone, Deserialize)]
-pub struct PathHub {
-    pub home: String,
-    pub login: String,
-    pub register: String,
+pub struct Fluent {
+    pub languages: PathHub,
+}
+
+#[derive(Clone, Deserialize)]
+pub struct FluentLanguages {
+    pub languages: PathHub,
 }
 
 #[derive(Clone, Deserialize)]
@@ -21,8 +24,15 @@ pub struct Path {
 }
 
 #[derive(Clone, Deserialize)]
+pub struct PathHub {
+    pub home: String,
+    pub login: String,
+    pub register: String,
+}
+
+
+#[derive(Clone, Deserialize)]
 pub struct Sass {
-    pub inline: bool,
     pub input: String,
     pub output: String,
 }
