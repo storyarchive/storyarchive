@@ -11,5 +11,9 @@ Cargo.lock
 
 # StoryArchive
 # Themes
-themes/
-!themes/.keep
+themes
+
+# Some people use Jetbrains
+.idea
+# And some use Eclipse
+.project
