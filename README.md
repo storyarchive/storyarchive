@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./icons/icon-160x160.png">
+  <img src="./assets/icon-160x160-transparent.png">
 </p>
 
 <h1 align="center">StoryArchive</h1>
