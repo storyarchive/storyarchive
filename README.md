@@ -36,8 +36,15 @@
   <a>
     <img src="https://img.shields.io/github/release/storyarchive/storyarchive/all.svg?style=flat-square" alt="Version" />
   </a>
+</div>
+
+
+<div align="center">
   <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/storyarchive/storyarchive.svg?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/license-Apache-blue.svg?style=flat-square" alt="License Apache 2.0" />
+  </a>
+  <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License Mit" />
   </a>
 </div>
 
