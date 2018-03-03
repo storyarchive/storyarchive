@@ -59,6 +59,8 @@ A project dedicated to creating a alternative to FanFiction.net, Archive of Our 
     * [Configuration](#configuration)
     * [Theme](#theme)
   * [Contributors](#contributors)
+  * [Acknowledgments](#acknowledgments)
+  * [Goals](#goals)
 
 ## Building
   * Install MongoDB and its development libraries.
@@ -145,3 +147,10 @@ The same example can be found in the ```Downhearted``` repository [link](https:/
 ## Acknowledgments
   * FanFiction.net, Archive of Our Own, and Wattpad for being the inspiration for creating this.
   * [japaric](https://github.com/japaric) and the [trust](https://github.com/japaric/trust) ci build files.
+
+## Goals
+  * v0.2.0
+    * Use [Dyon](https://github.com/PistonDevelopers/dyon) as a plugin system.
+      * Convert site's modules to Dyon plugins if possible.
+  * v0.1.0
+    * Get the basis of the site working.
