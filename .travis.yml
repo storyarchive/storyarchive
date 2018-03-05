@@ -104,6 +104,13 @@ matrix:
 
 before_install:
   - set -e
+  - sudo apt-get install automake libtool
+  - git clone https://github.com/sass/libsass.git
+  - cd libsass
+  - autoreconf --force --install
+  - ./configure --disable-tests --disable-static --enable-shared --prefix=/usr
+  - make -j5 install
+  - cd ..
   - rustup self update
 
 install:
