@@ -41,6 +41,12 @@ use rocket_contrib::Template;
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 
+/// Base StoryArchive assets.
+///
+/// Due to ordering and design theme assets come before base assets.
+///
+/// # Parameters
+///   * ```file```: The base assest file requested.
 #[get("/<file..>", rank = 2)]
 fn assets(
     file: PathBuf,
@@ -48,6 +54,14 @@ fn assets(
     NamedFile::open(Path::new("assets").join(file)).ok()
 }
 
+/// Any assets that come from themes.
+///
+/// Due to ordering and design theme assets come before base assets.
+///
+/// # Parameters
+///   * ```file```: The Theme assest file requested.
+///   * ```storyarchive_config```: The cloned instance of the StoryArchive config.
+///   * ```theme_config```: The cloned instance of the Theme config.
 #[get("/theme/<file..>", rank = 1)]
 fn assets_theme(
     file: PathBuf,
@@ -64,29 +78,57 @@ fn assets_theme(
     ).join(file)).ok()
 }
 
+/// A wrapper function that will pass any error to its output.
+///
+/// # Example
+/// ```rust
+/// let rocket = match read() {
+///     Err(e) => panic!("{}", e),
+///     Ok(r) => r,
+/// };
+/// 
+/// rocket.launch();
+/// ```
 fn read() -> Result<rocket::Rocket, String> {
+    // Load in the config from ```StoryArchive.toml```.
+    //
+    // Throw error as string to Result.
     let config = StoryArchiveConfig::new()
         .map_err(|e| e.to_string())?;
 
+    // Load in the config from ```Theme.toml``` of the theme StoryArchive is configured to use.
+    //
+    // Throw error as string to Result.
     let theme_config = ThemeConfig::new(
         config.general.theme.clone(),
         config.general.themes_dir.clone(),
     ).map_err(|e| e.to_string())?;
 
+    // Attempt to connect to database, gaining access to the client itself and the database.
+    //
+    // Throw error as string to Result.
     let (client, db) = init_db(
         &config.database.database_url.clone(),
         &config.database.database_name.clone(),
     ).map_err(|e| e.to_string())?;
 
-
+    // Check theme for scss and compile it.
+    //
+    // Throw error as string to Result.
     let mut sass = Sass::new(
         config.clone(),
         theme_config.clone()
     ).map_err(|e| e.to_string())?;
 
+    // Write compiled scss to theme assets folder.
+    //
+    // Throw error as string to Result.
     sass = sass.write()
         .map_err(|e| e.to_string())?;
 
+    // Start and mount Rocket.
+    //
+    // Any errors at this point are handled by the caller.
     let rocket = rocket::ignite()
         .mount("/", hub::routes())
         .mount("assets/", routes![assets, assets_theme])
@@ -101,6 +143,10 @@ fn read() -> Result<rocket::Rocket, String> {
 }
 
 fn main() {
-    let rocket = read().unwrap();
+    let rocket = match read() {
+        Err(e) => panic!("{}", e),
+        Ok(r) => r,
+    };
+
     rocket.launch();
 }
