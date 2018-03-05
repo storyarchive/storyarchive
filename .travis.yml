@@ -6,17 +6,11 @@ language: rust
 services: docker
 sudo: required
 
-# TODO Rust builds on stable by default, this can be
-# overridden on a case by case basis down below.
-
 env:
   global:
-    # TODO Update this to match the name of your project.
     - CRATE_NAME=storyarchive
 
 matrix:
-  # TODO These are all the build jobs. Adjust as necessary. Comment out what you
-  # don't need
   include:
     # Android
     # TODO: Figure out how to get PostgreSQL and SQLite on Android and iOS
@@ -125,20 +119,12 @@ before_deploy:
   - sh ci/before_deploy.sh
 
 deploy:
-  # TODO update `api_key.secure`
-  # - Create a `public_repo` GitHub token. Go to: https://github.com/settings/tokens/new
-  # - Encrypt it: `travis encrypt 0123456789012345678901234567890123456789
-  # - Paste the output down here
   api_key:
     secure: "fLSXGn6fEzAC5fBBXGqFHrGrjhmB0k7M3KG8RfhLuMUzdB4XdHZakpx4X8czQ/VQH2hRQa+mn52JyGBdL3liuqeRlHp6T+xKeE83Y/36eLq+GOHCrxmM/tbSwjRFmY9+hyxScHlNkal3XSpcZNq1UoaYKKDiSrsDuDi19TeZzD5JH+jPzxhokA5/O7PQhntWX/qsrg7DI04bnhmO85DLjRhENRwYCml3aOb22VWxGVGkEa6kx68IIvJ82ukx/UaAZXaUC5UtlWBCDR6CsHVUphaqvyTo2XVJXT6+RRZCq92/60NpwuP3g7cgOk9emlpOk8wEEV+8HLIGnQrPYjfq+ow10wXT9ratjt/S6PlFvlAJQjVYWPhSkrgkqq9HWKXDBz9djSqfBRHUKgx/5koQI2jMJhgdrGbScGEjNduaucrDou/lYTQntO5/cPQlIcWT1oLYuI2ao5gp4GDe851v3FdRq0AIhRBwDuQj/L4bfRafKHNM5fC3pKRnC8cxMOshle4HNbfpUtjghBx1IY/vux/ed6arLve6PnV6+BPwSgHox7kDsfgDbJKSPSuDbIikMub4V0TTVKxKgB3N1NAiA3NV4g2GqWW6TREU0FynPcDhYMnL9euBKiAC1LGEJ/wgsMqHpKthu126mazDtlAM0W0fuxYLIa7sLJiR45DnP6U="
   file_glob: true
   file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
   on:
-    # TODO Here you can pick which targets will generate binary releases
-    # In this example, there are some targets that are tested using the stable
-    # and nightly channels. This condition makes sure there is only one release
-    # for such targets and that's generated using the stable channel
-    condition: $TRAVIS_RUST_VERSION = stable
+    condition: $TRAVIS_RUST_VERSION = nightly
     tags: true
   provider: releases
   skip_cleanup: true
@@ -150,6 +136,10 @@ before_cache:
 
 branches:
   only:
+    # dev
+    - /^dev-\d+\.\d+(\.\d+)?(-\S*)?$/
+    # stable
+    - /^stable-\d+\.\d+(\.\d+)?(-\S*)?$/
     # release tags
     - /^v\d+\.\d+\.\d+.*$/
     - master

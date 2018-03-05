@@ -3,29 +3,21 @@
 
 environment:
   global:
-  # TODO This is the Rust channel that build jobs will use by default but can be
-  # overridden on a case by case basis down below
     RUST_VERSION: nightly
-
-    # TODO Update this to match the name of your project.
     CRATE_NAME: storyarchive
 
-  # TODO These are all the build jobs. Adjust as necessary. Comment out what you
-  # don't need
   matrix:
     # MinGW
-    # - TARGET: i686-pc-windows-gnu
-    # - TARGET: x86_64-pc-windows-gnu
+    - TARGET: i686-pc-windows-gnu
+      RUST_VERSION: nightly
+    - TARGET: x86_64-pc-windows-gnu
+      RUST_VERSION: nightly
 
     # MSVC
     - TARGET: i686-pc-windows-msvc
+      RUST_VERSION: nightly
     - TARGET: x86_64-pc-windows-msvc
-
-    # Testing other channels
-    # - TARGET: x86_64-pc-windows-gnu
-    #   RUST_VERSION: nightly
-    # - TARGET: x86_64-pc-windows-msvc
-    #   RUST_VERSION: nightly
+      RUST_VERSION: nightly
 
 install:
   - ps: >-
@@ -81,6 +73,10 @@ cache:
 
 branches:
   only:
+    # dev
+    - /^dev-\d+\.\d+(\.\d+)?(-\S*)?$/
+    # stable
+    - /^stable-\d+\.\d+(\.\d+)?(-\S*)?$/
     # Release tags
     - /^v\d+\.\d+\.\d+.*$/
     - master

@@ -6,6 +6,7 @@ use bson::oid::ObjectId;
 use models::story::Story;
 
 /// A user and its information and settings
+///
 /// # Fields
 ///   * ```authors_favorite```: A vector of ObjectIds of the user's favorite users
 ///   * ```authors_following```: A vector of ObjectIds of the users that the user is following
@@ -33,6 +34,13 @@ pub struct User {
 }
 
 impl User {
+    /// Transforms the user struct into a MongoDB Bson OrderedDocument
+    ///
+    /// # Example
+    /// ```rust
+    /// let user = User...;
+    /// mongodb_collection.insert_one(user.create_user_doc().clone(), None);
+    /// ```
     pub fn create_user_doc(self) -> Document {
         doc! {
 
