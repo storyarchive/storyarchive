@@ -20,10 +20,10 @@
 </div>
 
 <div align="center">
-  <a>
+  <a href="#">
     <img src="https://img.shields.io/appveyor/ci/storyarchive/storyarchive.svg?style=flat-square" alt="Appveyor Build Status" />
   </a>
-  <a>
+  <a href="https://travis-ci.org/storyarchive/storyarchive">
     <img src="https://img.shields.io/travis/storyarchive/storyarchive.svg?style=flat-square" alt="Travis Build Status" />
   </a>
 </div>
@@ -33,7 +33,7 @@
   <a href="https://github.com/storyarchive/storyarchive/releases">
     <img src="https://img.shields.io/github/downloads/storyarchive/storyarchive/total.svg?style=flat-square" alt="Downloads" />
   </a>
-  <a>
+  <a href="#">
     <img src="https://img.shields.io/github/release/storyarchive/storyarchive/all.svg?style=flat-square" alt="Version" />
   </a>
 </div>
