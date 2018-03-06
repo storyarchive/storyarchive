@@ -20,8 +20,8 @@
 </div>
 
 <div align="center">
-  <a href="#">
-    <img src="https://img.shields.io/appveyor/ci/storyarchive/storyarchive.svg?style=flat-square" alt="Appveyor Build Status" />
+  <a href="https://ci.appveyor.com/project/Txuritan/storyarchive">
+    <img src="https://img.shields.io/appveyor/ci/Txuritan/storyarchive.svg?style=flat-square" alt="Appveyor Build Status" />
   </a>
   <a href="https://travis-ci.org/storyarchive/storyarchive">
     <img src="https://img.shields.io/travis/storyarchive/storyarchive.svg?style=flat-square" alt="Travis Build Status" />
@@ -40,10 +40,10 @@
 
 
 <div align="center">
-  <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE">
+  <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE-APACHE">
     <img src="https://img.shields.io/badge/license-Apache-blue.svg?style=flat-square" alt="License Apache 2.0" />
   </a>
-  <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE">
+  <a href="https://github.com/storyarchive/storyarchive/blob/master/LICENSE-MIT">
     <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License Mit" />
   </a>
 </div>
