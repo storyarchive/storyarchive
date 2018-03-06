@@ -104,10 +104,12 @@ matrix:
 
 before_install:
   - set -e
+  - gcc -v
+  - g++ -v
   - git clone https://github.com/sass/libsass.git
   - cd libsass
   - autoreconf --force --install
-  - ./configure --disable-tests --disable-static --enable-shared --prefix=/usr
+  - ./configure --disable-tests --enable-static --disable-shared --prefix=/usr
   - sudo make -j5 install
   - cd ..
   - rustup self update
