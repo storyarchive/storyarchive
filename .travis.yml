@@ -104,7 +104,6 @@ matrix:
 
 before_install:
   - set -e
-  - sudo apt-get install automake libtool g++
   - git clone https://github.com/sass/libsass.git
   - cd libsass
   - autoreconf --force --install
