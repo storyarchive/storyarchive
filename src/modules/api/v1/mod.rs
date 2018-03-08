@@ -1,2 +1,7 @@
-pub mod json;
-pub mod xml;
+use rocket::Route;
+
+pub fn routes() -> Vec<Route> {
+    routes![
+        
+    ]
+}
